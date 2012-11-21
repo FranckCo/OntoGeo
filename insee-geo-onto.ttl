@@ -21,7 +21,8 @@
       dcterms:creator [ a foaf:Person ; foaf:name "Franck Cotton" ];
       dcterms:contributor <http://dbpedia.org/resource/Mondeca> ;
       dcterms:description "Ontologie des objets géographiques de l'INSEE, en particulier des territoires administratifs de la France"@fr ;
-      dcterms:modified "2012-08-13" ;
+	  dcterms:issued "2012-08-13" ;
+      dcterms:modified "2012-11-20" ;
       dcterms:publisher <http://dbpedia.org/resource/INSEE> ;
       dcterms:title "Ontologie géographique de l'INSEE"@fr ;
 	  vann:preferredNamespacePrefix "igeo" ;
@@ -31,7 +32,7 @@
 	  voaf:classNumber "48"^^xsd:integer ;
 	  voaf:propertyNumber "43"^^xsd:integer ;
       owl:incompatibleWith <http://rdf.insee.fr/geo/ontologie-geo-2006.rdf> ;
-      owl:versionInfo "Version 2.4.0 - 2012-08-13" .
+      owl:versionInfo "Version 2.5 - 2012-11-20" .
 
 
 #################################################################
@@ -48,7 +49,7 @@ igeo:Arrondissement
       a owl:Class ;
       rdfs:label "Arrondissement"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf gn:Feature , igeo:TerritoireAdministratif ;
+      rdfs:subClassOf igeo:TerritoireAdministratif ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Departement ;
@@ -58,7 +59,7 @@ igeo:Arrondissement
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:hasValue <http://www.geonames.org/ontology#A.ADM3> ;
-                owl:onProperty gn:featureCode
+                owl:onProperty igeo:codeAdministratifGeonames
               ] .
 
 igeo:ArrondissementMunicipal
@@ -122,7 +123,7 @@ igeo:Commune
       a owl:Class ;
       rdfs:label "Commune"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf gn:Feature , igeo:TerritoireAdministratif , igeo:LAU2 ;
+      rdfs:subClassOf igeo:TerritoireAdministratif , igeo:LAU2 ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Arrondissement ;
@@ -137,7 +138,7 @@ igeo:Commune
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:hasValue <http://www.geonames.org/ontology#A.ADM4> ;
-                owl:onProperty gn:featureCode
+                owl:onProperty igeo:codeAdministratifGeonames
               ] .
 
 igeo:CreationOuRetablissement
@@ -151,7 +152,7 @@ igeo:Departement
       a owl:Class ;
       rdfs:label "Département"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf gn:Feature , igeo:NUTS3 , igeo:TerritoireAdministratif ;
+      rdfs:subClassOf igeo:NUTS3 , igeo:TerritoireAdministratif ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Region ;
@@ -166,7 +167,7 @@ igeo:Departement
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:hasValue <http://www.geonames.org/ontology#A.ADM2> ;
-                owl:onProperty gn:featureCode
+                owl:onProperty igeo:codeAdministratifGeonames
               ] .
 
 igeo:DeplacementDeLimitesDIRIS
@@ -390,11 +391,11 @@ igeo:Pays
       a owl:Class ;
       rdfs:label "Pays"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf gn:Feature , igeo:PaysOuTerritoire ;
+      rdfs:subClassOf  igeo:PaysOuTerritoire ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:hasValue <http://www.geonames.org/ontology#A.PCLI> ;
-                owl:onProperty gn:featureCode
+                owl:onProperty igeo:codeAdministratifGeonames
               ] .
 
 igeo:PaysOuTerritoire
@@ -402,6 +403,7 @@ igeo:PaysOuTerritoire
       rdfs:label "Pays ou territoire"@fr ;
       rdfs:comment "Pays ou subdivision géopolitique d'un pays"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+	  rdfs:subClassOf dcterms:Location ; 
       rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
 
 igeo:Region
@@ -409,7 +411,7 @@ igeo:Region
       rdfs:label "Région"@fr ;
 	  rdfs:comment "Région française de métropole ou d'outre-mer"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf gn:Feature , igeo:NUTS2 , igeo:TerritoireAdministratif ;
+      rdfs:subClassOf igeo:NUTS2 , igeo:TerritoireAdministratif ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:allValuesFrom igeo:Departement ;
@@ -418,7 +420,7 @@ igeo:Region
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:hasValue <http://www.geonames.org/ontology#A.ADM1> ;
-                owl:onProperty gn:featureCode
+                owl:onProperty igeo:codeAdministratifGeonames
               ] .
 
 igeo:RetablissementCommunesIssuesDeCommuneIrisees
@@ -910,64 +912,16 @@ igeo:voisin
       rdfs:comment "Le Territoire de la République française comprend la France et les territoires suivants : Nouvelle-Calédonie, Polynésie française, îles Wallis et Futuna, Terres australes et antarctiques françaises, îles éparses de l'Océan indien, ainsi que la collectivité territoriale à statut particulier : Saint-Pierre-et-Miquelon."@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
 
-# Types d'EPCI
-
-igeo:typeDEPCICA
-      a igeo:TypeDEPCI ;
-      rdfs:label "Type d'EPCI CA"@fr ;
-      rdfs:comment "Communauté d'agglomération"@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
-
-igeo:typeDEPCICC
-      a igeo:TypeDEPCI ;
-      rdfs:label "Type d'EPCI CC"@fr ;
-      rdfs:comment "Communauté de communes"@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
-
-igeo:typeDEPCICU
-      a igeo:TypeDEPCI ;
-      rdfs:label "Type d'EPCI CU"@fr ;
-      rdfs:comment "Communauté urbaine"@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
-
-igeo:typeDEPCISAN
-      a igeo:TypeDEPCI ;
-	  rdfs:label "Type d'EPCI SAN"@fr ;
-	  rdfs:comment "Syndicat d'agglomération nouvelle"@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
-
-# Types d'IRIS
-
-igeo:typeDIRISA
-      a igeo:TypeDIRIS ;
-      rdfs:label "Type d'IRIS A"@fr ;
-      rdfs:comment "IRIS d'activité"@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
-
-igeo:typeDIRISD
-      a igeo:TypeDIRIS ;
-      rdfs:label "Type d'IRIS D"@fr ;
-      rdfs:comment "IRIS divers"@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
-
-igeo:typeDIRISH
-      a igeo:TypeDIRIS ;
-      rdfs:label "Type d'IRIS H"@fr ;
-      rdfs:comment "IRIS d'habitat"@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
-
-igeo:typeDIRISZ
-      a igeo:TypeDIRIS ;
-      rdfs:label "Type d'IRIS Z"@fr ;
-      rdfs:comment "Commune non découpée en IRIS"@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
-
 
 #################################################################
 # Ressources externes redéclarées (pour éviter les imports)
 #################################################################
 
 #Classes
+
+skos:ConceptScheme
+	 a owl:Class ;
+	 rdfs:label "Structure de concepts" @fr.
 
 gn:Code
       a owl:Class ;
@@ -987,11 +941,6 @@ foaf:Document
       rdfs:comment """An arbitrary classification of a space/time region, by a cognitive agent. An event may have actively participating agents, passive factors, products, and a location in space/time."""@en ;
       rdfs:label "Événement"@fr , "Event"@en .
 
-gn:Feature
-      a owl:Class ;
-      rdfs:label "Feature"@en , "Entité Geonames"@fr ;
-      rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
-
 cc:License
       a owl:Class ;
       rdfs:label "Licence"@fr ;
@@ -1004,6 +953,10 @@ foaf:Organization
 foaf:Person
       a owl:Class ;
       rdfs:label "Personne"@fr .
+	  
+dcterms:Location
+      a owl:Class ;
+      rdfs:label "Lieu"@fr .
 
 <http://www.w3.org/2003/01/geo/wgs84_pos#Point>
       a owl:Class ;
@@ -1036,24 +989,31 @@ gn:countryCode
 
 # Object properties
 
-gn:featureCode
+igeo:codeAdministratifGeonames
       a owl:ObjectProperty ;
-      rdfs:label "code Geonames"@fr .
-
+	  a owl:FunctionalProperty;
+	  rdfs:domain igeo:TerritoireAdministratif;
+	  rdfs:range
+	         [ a owl:Restriction ;
+                owl:hasValue <http://www.geonames.org/ontology#A> ;
+                owl:onProperty skos:inScheme.
+              ] ;
+      rdfs:label "code administratif Geonames"@fr .
+	  
 dcterms:contributor
-      a owl:ObjectProperty ;
+      a rdf:Property ;
       rdfs:label "contributeur"@fr .
 
 dcterms:creator
-      a owl:ObjectProperty ;
+	  a rdf:Property ;
       rdfs:label "créateur"@fr .
 
 dcterms:hasPart
-      a owl:ObjectProperty ;
+      a rdf:Property ;
       rdfs:label "a pour partie"@fr .
 
 dcterms:isPartOf
-      a owl:ObjectProperty ;
+      a rdf:Property ;
       rdfs:label "fait partie de"@fr .
 
 cc:license
@@ -1102,3 +1062,71 @@ dcterms:publisher
 
 <http://dbpedia.org/resource/Mondeca>
       a foaf:Organization .
+	  
+# Concept Scheme et Concepts "Types d'EPCI"
+
+<http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI>
+	a skos:ConceptScheme ;
+	rdfs:label "Type d'EPCI"@fr .
+	
+<http://id.insee.fr/codes/geo/TypeDEPCI/CA>
+      a skos:Concept ;
+	  a igeo:TypeDEPCI ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
+      skos:prefLabel "Communauté d'agglomération" @fr ;
+	  skos:notation "CA".
+	  
+<http://id.insee.fr/codes/geo/TypeDEPCI/CC>
+      a skos:Concept ;
+	  a igeo:TypeDEPCI ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
+      skos:prefLabel "Communauté de communes" @fr ;
+	  skos:notation "CC".
+	  
+<http://id.insee.fr/codes/geo/TypeDEPCI/CU>
+      a skos:Concept ;
+	  a igeo:TypeDEPCI ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
+      skos:prefLabel "Communauté urbaine" @fr ;
+	  skos:notation "CU".
+	  
+<http://id.insee.fr/codes/geo/TypeDEPCI/SAN>
+      a skos:Concept ;
+	  a igeo:TypeDEPCI ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
+      skos:prefLabel "Syndicat d'agglomération nouvelle" @fr ;
+	  skos:notation "SAN".
+
+# Concept Scheme et Concepts "Types d'IRIS"
+
+<http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS>
+	a skos:ConceptScheme ;
+	rdfs:label "Type d'IRIS"@fr .
+	
+<http://id.insee.fr/codes/geo/TypeDIRIS/A>
+      a skos:Concept ;
+	  a igeo:TypeDIRIS ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
+      skos:prefLabel "IRIS d'activité" @fr ;
+	  skos:notation "A".
+
+<http://id.insee.fr/codes/geo/TypeDIRIS/D>
+      a skos:Concept ;
+	  a igeo:TypeDIRIS ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
+      skos:prefLabel "IRIS divers" @fr ;
+	  skos:notation "D".
+
+<http://id.insee.fr/codes/geo/TypeDIRIS/H>
+      a skos:Concept ;
+	  a igeo:TypeDIRIS ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
+      skos:prefLabel "IRIS d'habitat" @fr ;
+	  skos:notation "H".
+	  
+<http://id.insee.fr/codes/geo/TypeDIRIS/Z>
+      a skos:Concept ;
+	  a igeo:TypeDIRIS ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
+      skos:prefLabel "Commune non découpée en IRIS" @fr ;
+	  skos:notation "Z".
