@@ -10,6 +10,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 
 
 #################################################################
@@ -543,6 +544,17 @@ igeo:ancienNom
       rdfs:domain igeo:ChangementDeNom ;
       rdfs:range <http://www.w3.org/2001/XMLSchema#token> .
 
+igeo:codeAdministratifGeonames
+      a owl:ObjectProperty ;
+	  a owl:FunctionalProperty;
+	  rdfs:domain igeo:TerritoireAdministratif;
+	  rdfs:range
+	         [ a owl:Restriction ;
+                owl:hasValue <http://www.geonames.org/ontology#A> ;
+                owl:onProperty skos:inScheme.
+              ] ;
+      rdfs:label "code administratif Geonames"@fr .
+
 igeo:codeArrondissement
       a owl:DatatypeProperty ;
       rdfs:label "code arrondissement"@fr ;
@@ -921,7 +933,7 @@ igeo:voisin
 
 skos:ConceptScheme
 	 a owl:Class ;
-	 rdfs:label "Structure de concepts" @fr.
+	 rdfs:label "Structure de concepts"@fr.
 
 gn:Code
       a owl:Class ;
@@ -966,39 +978,22 @@ dcterms:Location
       a owl:Class ;
       rdfs:label "Spatial thing"@en , "Entité spatiale"@fr .
 
-# Datatype properties
+# Properties
 
 <http://www.w3.org/2003/01/geo/wgs84_pos#alt>
-      a owl:DatatypeProperty ;
-      rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
+      a rdf:Property ;
       rdfs:label "altitude"@fr .
 
 gn:countryCode
-      a owl:DatatypeProperty ;
       owl:equivalentProperty igeo:codeISO .
 
 <http://www.w3.org/2003/01/geo/wgs84_pos#lat>
-      a owl:DatatypeProperty ;
-      rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
+	  a rdf:Property ;
       rdfs:label "latitude"@fr .
 
 <http://www.w3.org/2003/01/geo/wgs84_pos#long>
-      a owl:DatatypeProperty ;
-      rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
+      a rdf:Property ;
       rdfs:label "longitude"@fr .
-
-# Object properties
-
-igeo:codeAdministratifGeonames
-      a owl:ObjectProperty ;
-	  a owl:FunctionalProperty;
-	  rdfs:domain igeo:TerritoireAdministratif;
-	  rdfs:range
-	         [ a owl:Restriction ;
-                owl:hasValue <http://www.geonames.org/ontology#A> ;
-                owl:onProperty skos:inScheme.
-              ] ;
-      rdfs:label "code administratif Geonames"@fr .
 	  
 dcterms:contributor
       a rdf:Property ;
@@ -1017,18 +1012,16 @@ dcterms:isPartOf
       rdfs:label "fait partie de"@fr .
 
 cc:license
-      a owl:ObjectProperty ;
+      a rdf:Property ;
       rdfs:label "licence"@fr .
 
 <http://purl.org/NET/c4dm/event.owl#place>
-      a owl:ObjectProperty ;
+      a rdf:Property ;
       rdfs:comment "Entité spatiale concernée par un événement"@fr ;
-      rdfs:domain <http://purl.org/NET/c4dm/event.owl#Event> ;
-      rdfs:label "place"@en , "lieu concerné"@fr ;
-      rdfs:range <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
+      rdfs:label "lieu concerné"@fr .
 
 dcterms:publisher
-      a owl:ObjectProperty ;
+      a rdf:Property ;
       rdfs:label "éditeur"@fr .
 
 # Individus
@@ -1073,28 +1066,28 @@ dcterms:publisher
       a skos:Concept ;
 	  a igeo:TypeDEPCI ;
 	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
-      skos:prefLabel "Communauté d'agglomération" @fr ;
+      skos:prefLabel "Communauté d'agglomération"@fr ;
 	  skos:notation "CA".
 	  
 <http://id.insee.fr/codes/geo/TypeDEPCI/CC>
       a skos:Concept ;
 	  a igeo:TypeDEPCI ;
 	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
-      skos:prefLabel "Communauté de communes" @fr ;
+      skos:prefLabel "Communauté de communes"@fr ;
 	  skos:notation "CC".
 	  
 <http://id.insee.fr/codes/geo/TypeDEPCI/CU>
       a skos:Concept ;
 	  a igeo:TypeDEPCI ;
 	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
-      skos:prefLabel "Communauté urbaine" @fr ;
+      skos:prefLabel "Communauté urbaine"@fr ;
 	  skos:notation "CU".
 	  
 <http://id.insee.fr/codes/geo/TypeDEPCI/SAN>
       a skos:Concept ;
 	  a igeo:TypeDEPCI ;
 	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
-      skos:prefLabel "Syndicat d'agglomération nouvelle" @fr ;
+      skos:prefLabel "Syndicat d'agglomération nouvelle"@fr ;
 	  skos:notation "SAN".
 
 # Concept Scheme et Concepts "Types d'IRIS"
@@ -1107,26 +1100,26 @@ dcterms:publisher
       a skos:Concept ;
 	  a igeo:TypeDIRIS ;
 	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
-      skos:prefLabel "IRIS d'activité" @fr ;
+      skos:prefLabel "IRIS d'activité"@fr ;
 	  skos:notation "A".
 
 <http://id.insee.fr/codes/geo/TypeDIRIS/D>
       a skos:Concept ;
 	  a igeo:TypeDIRIS ;
 	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
-      skos:prefLabel "IRIS divers" @fr ;
+      skos:prefLabel "IRIS divers"@fr ;
 	  skos:notation "D".
 
 <http://id.insee.fr/codes/geo/TypeDIRIS/H>
       a skos:Concept ;
 	  a igeo:TypeDIRIS ;
 	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
-      skos:prefLabel "IRIS d'habitat" @fr ;
+      skos:prefLabel "IRIS d'habitat"@fr ;
 	  skos:notation "H".
 	  
 <http://id.insee.fr/codes/geo/TypeDIRIS/Z>
       a skos:Concept ;
 	  a igeo:TypeDIRIS ;
 	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
-      skos:prefLabel "Commune non découpée en IRIS" @fr ;
+      skos:prefLabel "Commune non découpée en IRIS"@fr ;
 	  skos:notation "Z".
