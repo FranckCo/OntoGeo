@@ -31,9 +31,9 @@
 	  dc:rights "Copyright © 2012 INSEE" ; 
 	  cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 	  voaf:classNumber "48"^^xsd:integer ;
-	  voaf:propertyNumber "43"^^xsd:integer ;
+	  voaf:propertyNumber "44"^^xsd:integer ;
       owl:incompatibleWith <http://rdf.insee.fr/geo/ontologie-geo-2006.rdf> ;
-      owl:versionInfo "Version 2.5 - 2012-11-20" .
+      owl:versionInfo "Version 2.5.2 - 2012-11-20" .
 
 
 #################################################################
@@ -544,17 +544,6 @@ igeo:ancienNom
       rdfs:domain igeo:ChangementDeNom ;
       rdfs:range <http://www.w3.org/2001/XMLSchema#token> .
 
-igeo:codeAdministratifGeonames
-      a owl:ObjectProperty ;
-	  a owl:FunctionalProperty;
-	  rdfs:domain igeo:TerritoireAdministratif;
-	  rdfs:range
-	         [ a owl:Restriction ;
-                owl:hasValue <http://www.geonames.org/ontology#A> ;
-                owl:onProperty skos:inScheme.
-              ] ;
-      rdfs:label "code administratif Geonames"@fr .
-
 igeo:codeArrondissement
       a owl:DatatypeProperty ;
       rdfs:label "code arrondissement"@fr ;
@@ -667,7 +656,7 @@ igeo:vivant
       rdfs:domain igeo:PaysOuTerritoire ;
       rdfs:range <http://www.w3.org/2001/XMLSchema#boolean> .
 
-	  
+
 #################################################################
 # Object properties
 #################################################################
@@ -715,6 +704,16 @@ igeo:chefLieuDeCommune
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:Commune ;
       rdfs:range <http://www.w3.org/2003/01/geo/wgs84_pos#Point> .
+
+igeo:codeAdministratifGeonames
+      a owl:FunctionalProperty , owl:ObjectProperty ;
+	  rdfs:domain igeo:TerritoireAdministratif;
+	  rdfs:range
+	         [ a owl:Restriction ;
+                owl:hasValue <http://www.geonames.org/ontology#A> ;
+                owl:onProperty skos:inScheme.
+              ] ;
+      rdfs:label "code administratif Geonames"@fr .
 
 igeo:communeDeplacee
       a owl:ObjectProperty ;
