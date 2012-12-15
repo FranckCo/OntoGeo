@@ -19,21 +19,21 @@
 
 <http://rdf.insee.fr/def/geo>  a owl:Ontology , voaf:Vocabulary ;
       cc:license <http://creativecommons.org/licenses/by/3.0/> ;
-      dcterms:creator [ a foaf:Person ; foaf:name "Franck Cotton" ];
-      dcterms:contributor <http://dbpedia.org/resource/Mondeca> ;
+      dcterms:creator [ a foaf:Person ; foaf:name "Franck Cotton" ] ;
+      dcterms:contributor [ a foaf:Person ; foaf:name "Bernard Vatant" ] ;
       dcterms:description "Ontologie des objets géographiques de l'INSEE, en particulier des territoires administratifs de la France"@fr ;
-	  dcterms:issued "2012-08-13" ;
-      dcterms:modified "2012-11-20" ;
+	  dcterms:issued "2012-08-13"^^xsd:date ;
+      dcterms:modified "2012-12-15"^^xsd:date ;
       dcterms:publisher <http://dbpedia.org/resource/INSEE> ;
       dcterms:title "Ontologie géographique de l'INSEE"@fr ;
 	  vann:preferredNamespacePrefix "igeo" ;
       vann:preferredNamespaceUri <http://rdf.insee.fr/def/geo#> ;
-	  dc:rights "Copyright © 2012 INSEE" ; 
+	  dc:rights "Copyright © 2013 INSEE" ; 
 	  cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 	  voaf:classNumber "48"^^xsd:integer ;
 	  voaf:propertyNumber "44"^^xsd:integer ;
       owl:incompatibleWith <http://rdf.insee.fr/geo/ontologie-geo-2006.rdf> ;
-      owl:versionInfo "Version 2.5.2 - 2012-11-20" .
+      owl:versionInfo "Version 2.5.3 - 2012-12-15" .
 
 
 #################################################################
@@ -55,7 +55,7 @@ igeo:Arrondissement
               [ a owl:Restriction ;
                 owl:onClass igeo:Departement ;
                 owl:onProperty igeo:subdivisionDe ;
-                owl:qualifiedCardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger>
+                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
@@ -97,7 +97,7 @@ igeo:ChangementDeDepartementOuArrondissement
       rdfs:subClassOf igeo:ModificationTerritoriale ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:cardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
                 owl:onProperty igeo:communeDeplacee
               ] .
 
@@ -109,7 +109,7 @@ igeo:ChangementDeNom
       rdfs:subClassOf igeo:ModificationTerritoriale ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:cardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
                 owl:onProperty igeo:territoireModifie
               ] .
 
@@ -129,11 +129,11 @@ igeo:Commune
               [ a owl:Restriction ;
                 owl:onClass igeo:Arrondissement ;
                 owl:onProperty igeo:subdivisionDe ;
-                owl:qualifiedCardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger>
+                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:cardinality "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> ;
+                owl:cardinality "0"^^xsd:nonNegativeInteger ;
                 owl:onProperty igeo:chefLieu
               ] ;
       rdfs:subClassOf
@@ -158,7 +158,7 @@ igeo:Departement
               [ a owl:Restriction ;
                 owl:onClass igeo:Region ;
                 owl:onProperty igeo:subdivisionDe ;
-                owl:qualifiedCardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger>
+                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
@@ -190,7 +190,7 @@ igeo:EchangeParcellesCommunesIrisees
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:EchangeDeParcelles , igeo:ModificationDIRIS ;
       rdfs:subClassOf
-              [ a       owl:Restriction ;
+              [ a owl:Restriction ;
                 owl:onProperty igeo:territoireModifie ;
                 owl:someValuesFrom igeo:Commune
               ] .
@@ -249,7 +249,7 @@ igeo:GrandQuartier
               [ a owl:Restriction ;
                 owl:onClass igeo:Commune ;
                 owl:onProperty igeo:subdivisionDe ;
-                owl:qualifiedCardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger>
+                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
@@ -282,7 +282,7 @@ igeo:GroupementDePays
               ] .
 
 igeo:IRIS
-      a  owl:Class ;
+      a owl:Class ;
       rdfs:label "IRIS"@fr ;
       rdfs:comment "Îlot regroupé pour l'information statistique"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
@@ -291,7 +291,7 @@ igeo:IRIS
               [ a owl:Restriction ;
                 owl:onClass igeo:Commune ;
                 owl:onProperty igeo:subdivisionDe ;
-                owl:qualifiedCardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger>
+                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] .
 
 igeo:LAU
@@ -319,7 +319,7 @@ igeo:ModificationDeGroupement
       rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event> ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:cardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
                 owl:onProperty igeo:groupementModifie
               ] .
 
@@ -392,7 +392,7 @@ igeo:Pays
       a owl:Class ;
       rdfs:label "Pays"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf  igeo:PaysOuTerritoire ;
+      rdfs:subClassOf igeo:PaysOuTerritoire ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:hasValue <http://www.geonames.org/ontology#A.PCLI> ;
@@ -482,12 +482,12 @@ igeo:TransfertDeChefLieu
       rdfs:subClassOf igeo:ModificationTerritoriale ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:cardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
                 owl:onProperty igeo:ancienChefLieu
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:cardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
                 owl:onProperty igeo:nouveauChefLieu
               ] .
 
@@ -500,7 +500,7 @@ igeo:TRIRIS
               [ a owl:Restriction ;
                 owl:onClass igeo:Commune ;
                 owl:onProperty igeo:subdivisionDe ;
-                owl:qualifiedCardinality "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger>
+                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
@@ -542,14 +542,14 @@ igeo:ancienNom
       rdfs:label "ancien nom"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:ChangementDeNom ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> .
+      rdfs:range xsd:token .
 
 igeo:codeArrondissement
       a owl:DatatypeProperty ;
       rdfs:label "code arrondissement"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:Arrondissement ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> ;
+      rdfs:range xsd:token ;
       rdfs:subPropertyOf igeo:codeINSEE .
 
 igeo:codeCanton
@@ -557,7 +557,7 @@ igeo:codeCanton
       rdfs:label "code canton"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:Canton ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> ;
+      rdfs:range xsd:token ;
       rdfs:subPropertyOf igeo:codeINSEE .
 
 igeo:codeCommune
@@ -565,7 +565,7 @@ igeo:codeCommune
       rdfs:label "code commune"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:Commune ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> ;
+      rdfs:range xsd:token ;
       rdfs:subPropertyOf igeo:codeINSEE .
 
 igeo:codeDepartement
@@ -573,7 +573,7 @@ igeo:codeDepartement
       rdfs:label "code département"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:Departement ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> ;
+      rdfs:range xsd:token ;
       rdfs:subPropertyOf igeo:codeINSEE .
 
 igeo:codeINSEE
@@ -582,14 +582,14 @@ igeo:codeINSEE
       rdfs:comment "Propriété générique à utiliser pour les types de territoire pour lesquels un type de code plus spécifique n'est pas défini"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:PaysOuTerritoire ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> .
+      rdfs:range xsd:token .
 
 igeo:codeIRIS
       a owl:DatatypeProperty ;
       rdfs:label "code IRIS"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:IRIS ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> ;
+      rdfs:range xsd:token ;
       rdfs:subPropertyOf igeo:codeINSEE .
 
 igeo:codeISO
@@ -598,7 +598,7 @@ igeo:codeISO
       rdfs:comment "Code conforme à la norme ISO 3166-1-alpha-2"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:Pays ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> ;
+      rdfs:range xsd:token ;
       owl:equivalentProperty gn:countryCode .
 
 igeo:codePays
@@ -606,7 +606,7 @@ igeo:codePays
       rdfs:label "code pays"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:Pays ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> ;
+      rdfs:range xsd:token ;
       rdfs:subPropertyOf igeo:codeINSEE .
 
 igeo:codeRegion
@@ -614,7 +614,7 @@ igeo:codeRegion
       rdfs:label "code région"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:Region ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> ;
+      rdfs:range xsd:token ;
       rdfs:subPropertyOf igeo:codeINSEE .
 
 igeo:date
@@ -623,7 +623,7 @@ igeo:date
       rdfs:comment "Date de la modification"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:ModificationTerritoriale ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#date> ;
+      rdfs:range xsd:date ;
       rdfs:subPropertyOf dcterms:date .
 
 igeo:description
@@ -632,21 +632,21 @@ igeo:description
       rdfs:comment "Description de la modification"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:ModificationTerritoriale ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> .
+      rdfs:range xsd:token .
 
 igeo:nom
       a owl:DatatypeProperty ;
       rdfs:label "nom"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:PaysOuTerritoire ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> .
+      rdfs:range xsd:token .
 
 igeo:nouveauNom
       a owl:DatatypeProperty ;
       rdfs:label "nouveau nom"@fr ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:ChangementDeNom ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#token> .
+      rdfs:range xsd:token .
 
 igeo:vivant
       a owl:FunctionalProperty , owl:DatatypeProperty ;
@@ -654,7 +654,7 @@ igeo:vivant
       rdfs:comment "La valeur par défaut 'true' indique que le territoire existe actuellement. La valeur 'false' indique un territoire mort suite à un événement de modification." ;
 	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:PaysOuTerritoire ;
-      rdfs:range <http://www.w3.org/2001/XMLSchema#boolean> .
+      rdfs:range xsd:boolean .
 
 
 #################################################################
@@ -893,35 +893,76 @@ igeo:voisin
 
 
 #################################################################
-# Individus
+# Concepts et Concept Schemes SKOS
 #################################################################
 
-# Ajout de quelques territoires utiles
+# Types d'EPCI
 
-<http://id.insee.fr/geo/pays/france>
-      a igeo:Pays ;
-      rdfs:label "France"@fr ;
-      rdfs:comment "La France ('France entière' est parfois utilisé) comprend les 96 départements d'Europe et les 5 départements d'Outre-mer : Guadeloupe, Martinique, Guyane, La Réunion et Mayotte (depuis avril 2011), soit 101 départements. Cet ensemble est celui qui fait partie de l'Union européenne."@fr ;
-      igeo:codeISO "FR" ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
+<http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI>
+	a skos:ConceptScheme ;
+	rdfs:label "Type d'EPCI"@fr .
+	
+<http://id.insee.fr/codes/geo/TypeDEPCI/CA>
+      a skos:Concept ;
+	  a igeo:TypeDEPCI ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
+      skos:prefLabel "Communauté d'agglomération"@fr ;
+	  skos:notation "CA".
+	  
+<http://id.insee.fr/codes/geo/TypeDEPCI/CC>
+      a skos:Concept ;
+	  a igeo:TypeDEPCI ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
+      skos:prefLabel "Communauté de communes"@fr ;
+	  skos:notation "CC".
+	  
+<http://id.insee.fr/codes/geo/TypeDEPCI/CU>
+      a skos:Concept ;
+	  a igeo:TypeDEPCI ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
+      skos:prefLabel "Communauté urbaine"@fr ;
+	  skos:notation "CU".
+	  
+<http://id.insee.fr/codes/geo/TypeDEPCI/SAN>
+      a skos:Concept ;
+	  a igeo:TypeDEPCI ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
+      skos:prefLabel "Syndicat d'agglomération nouvelle"@fr ;
+	  skos:notation "SAN".
 
-<http://id.insee.fr/geo/territoireFrancais/franceDeProvince>
-      a igeo:TerritoireFrancais ;
-      rdfs:label "France de province"@fr ;
-      rdfs:comment "Ensemble des régions métropolitaines moins la région Île-de-France"@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
+# Types d'IRIS
 
-<http://id.insee.fr/geo/territoireFrancais/franceMetropolitaine>
-      a igeo:TerritoireFrancais ;
-      rdfs:label "France métropolitaine"@fr ;
-      rdfs:comment "La France métropolitaine comprend les 96 départements d'Europe."@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
+<http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS>
+	a skos:ConceptScheme ;
+	rdfs:label "Type d'IRIS"@fr .
+	
+<http://id.insee.fr/codes/geo/TypeDIRIS/A>
+      a skos:Concept ;
+	  a igeo:TypeDIRIS ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
+      skos:prefLabel "IRIS d'activité"@fr ;
+	  skos:notation "A".
 
-<http://id.insee.fr/geo/territoireFrancais/territoireDeLaRepubliqueFrancaise>
-      a igeo:TerritoireFrancais ;
-      rdfs:label "Territoire de la République française"@fr ;
-      rdfs:comment "Le Territoire de la République française comprend la France et les territoires suivants : Nouvelle-Calédonie, Polynésie française, îles Wallis et Futuna, Terres australes et antarctiques françaises, îles éparses de l'Océan indien, ainsi que la collectivité territoriale à statut particulier : Saint-Pierre-et-Miquelon."@fr ;
-	  rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
+<http://id.insee.fr/codes/geo/TypeDIRIS/D>
+      a skos:Concept ;
+	  a igeo:TypeDIRIS ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
+      skos:prefLabel "IRIS divers"@fr ;
+	  skos:notation "D".
+
+<http://id.insee.fr/codes/geo/TypeDIRIS/H>
+      a skos:Concept ;
+	  a igeo:TypeDIRIS ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
+      skos:prefLabel "IRIS d'habitat"@fr ;
+	  skos:notation "H".
+	  
+<http://id.insee.fr/codes/geo/TypeDIRIS/Z>
+      a skos:Concept ;
+	  a igeo:TypeDIRIS ;
+	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
+      skos:prefLabel "Commune non découpée en IRIS"@fr ;
+	  skos:notation "Z".
 
 
 #################################################################
@@ -937,9 +978,9 @@ skos:ConceptScheme
 gn:Code
       a owl:Class ;
       rdfs:label "Code Geonames"@fr ;
-      rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> .
+      rdfs:subClassOf skos:Concept .
 
-<http://www.w3.org/2004/02/skos/core#Concept>
+skos:Concept
       a owl:Class ;
       rdfs:label "Concept"@fr .
 
@@ -1051,74 +1092,3 @@ dcterms:publisher
 
 <http://dbpedia.org/resource/INSEE>
       a foaf:Organization .
-
-<http://dbpedia.org/resource/Mondeca>
-      a foaf:Organization .
-	  
-# Concept Scheme et Concepts "Types d'EPCI"
-
-<http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI>
-	a skos:ConceptScheme ;
-	rdfs:label "Type d'EPCI"@fr .
-	
-<http://id.insee.fr/codes/geo/TypeDEPCI/CA>
-      a skos:Concept ;
-	  a igeo:TypeDEPCI ;
-	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
-      skos:prefLabel "Communauté d'agglomération"@fr ;
-	  skos:notation "CA".
-	  
-<http://id.insee.fr/codes/geo/TypeDEPCI/CC>
-      a skos:Concept ;
-	  a igeo:TypeDEPCI ;
-	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
-      skos:prefLabel "Communauté de communes"@fr ;
-	  skos:notation "CC".
-	  
-<http://id.insee.fr/codes/geo/TypeDEPCI/CU>
-      a skos:Concept ;
-	  a igeo:TypeDEPCI ;
-	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
-      skos:prefLabel "Communauté urbaine"@fr ;
-	  skos:notation "CU".
-	  
-<http://id.insee.fr/codes/geo/TypeDEPCI/SAN>
-      a skos:Concept ;
-	  a igeo:TypeDEPCI ;
-	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDEPCI/TypeDEPCI> ;
-      skos:prefLabel "Syndicat d'agglomération nouvelle"@fr ;
-	  skos:notation "SAN".
-
-# Concept Scheme et Concepts "Types d'IRIS"
-
-<http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS>
-	a skos:ConceptScheme ;
-	rdfs:label "Type d'IRIS"@fr .
-	
-<http://id.insee.fr/codes/geo/TypeDIRIS/A>
-      a skos:Concept ;
-	  a igeo:TypeDIRIS ;
-	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
-      skos:prefLabel "IRIS d'activité"@fr ;
-	  skos:notation "A".
-
-<http://id.insee.fr/codes/geo/TypeDIRIS/D>
-      a skos:Concept ;
-	  a igeo:TypeDIRIS ;
-	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
-      skos:prefLabel "IRIS divers"@fr ;
-	  skos:notation "D".
-
-<http://id.insee.fr/codes/geo/TypeDIRIS/H>
-      a skos:Concept ;
-	  a igeo:TypeDIRIS ;
-	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
-      skos:prefLabel "IRIS d'habitat"@fr ;
-	  skos:notation "H".
-	  
-<http://id.insee.fr/codes/geo/TypeDIRIS/Z>
-      a skos:Concept ;
-	  a igeo:TypeDIRIS ;
-	  skos:inScheme <http://id.insee.fr/codes/geo/TypeDIRIS/TypeDIRIS> ;
-      skos:prefLabel "Commune non découpée en IRIS"@fr ;
-	  skos:notation "Z".
