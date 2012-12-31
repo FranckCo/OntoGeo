@@ -711,7 +711,7 @@ igeo:codeAdministratifGeonames
       rdfs:range
 	          [ a owl:Restriction ;
                 owl:hasValue <http://www.geonames.org/ontology#A> ;
-                owl:onProperty skos:inScheme.
+                owl:onProperty skos:inScheme
                ] ;
       rdfs:label "code administratif Geonames"@fr .
 
@@ -875,8 +875,8 @@ igeo:typeDEPCI
       rdfs:domain igeo:EPCI ;
       rdfs:range
 	          [ a owl:Restriction ;
-	            owl:onProperty skos:inScheme.
-	            owl:hasValue <http://id.insee.fr/codes/geo/typeDEPCI/liste> ;
+	            owl:onProperty skos:inScheme ;
+	            owl:hasValue <http://id.insee.fr/codes/geo/typeDEPCI/liste>
 	          ] .
 
 
@@ -887,8 +887,8 @@ igeo:typeDIRIS
       rdfs:domain igeo:IRIS ;
       rdfs:range
 	          [ a owl:Restriction ;
-	            owl:onProperty skos:inScheme.
-	            owl:hasValue <http://id.insee.fr/codes/geo/typeDIRIS/liste> ;
+	            owl:onProperty skos:inScheme ;
+	            owl:hasValue <http://id.insee.fr/codes/geo/typeDIRIS/liste>
 	          ] .
 
 igeo:voisin
