@@ -23,7 +23,7 @@
       dcterms:contributor [ a foaf:Person ; foaf:name "Bernard Vatant" ] ;
       dcterms:description "Ontologie des objets géographiques de l'INSEE, en particulier des territoires administratifs de la France"@fr ;
       dcterms:issued "2012-08-13"^^xsd:date ;
-      dcterms:modified "2012-12-31"^^xsd:date ;
+      dcterms:modified "2013-08-29"^^xsd:date ;
       dcterms:publisher <http://dbpedia.org/resource/INSEE> ;
       dcterms:title "Ontologie géographique de l'INSEE"@fr ;
       vann:preferredNamespacePrefix "igeo" ;
@@ -33,7 +33,7 @@
       voaf:classNumber "48"^^xsd:integer ;
       voaf:propertyNumber "44"^^xsd:integer ;
       owl:incompatibleWith <http://rdf.insee.fr/geo/ontologie-geo-2006.rdf> ;
-      owl:versionInfo "Version 2.5.5 - 2012-12-31" .
+      owl:versionInfo "Version 2.6.0 - 2013-08-29" .
 
 
 #################################################################
