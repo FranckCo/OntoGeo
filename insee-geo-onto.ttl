@@ -113,10 +113,10 @@ igeo:ChangementDeNom
                 owl:onProperty igeo:territoireModifie
               ] .
 
-igeo:CollectiviteTerritoriale
+igeo:CollectiviteDOutreMer
       a owl:Class ;
-      rdfs:label "Collectivité territoriale"@fr ;
-      rdfs:comment "Collectivité territoriale d'outre-mer. Inclut les TOM et les territoires à statut particulier."@fr ;
+      rdfs:label "Collectivité d'outre-mer"@fr ;
+      rdfs:comment "Inclut les anciens TOM et les territoires à statut particulier : Polynésie française, Saint-Barthélemy, Saint-Martin, Saint-Pierre-et-Miquelon et Wallis-et-Futuna."@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:TerritoireAdministratif .
 
