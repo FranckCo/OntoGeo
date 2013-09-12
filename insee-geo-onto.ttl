@@ -982,7 +982,7 @@ igeo:voisin
 
 skos:ConceptScheme
       a owl:Class ;
-      rdfs:label "Structure de concepts"@fr.
+      rdfs:label "Structure de concepts"@fr .
 
 gn:Code
       a owl:Class ;
